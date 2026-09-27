@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ahayy jeng kamu </title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* HALAMAN UTAMA */
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    color: white;
+}
+
+.card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    padding: 30px 20px;
+    border-radius: 28px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+.heart-big {
+    font-size: 70px;
+    animation: denyut 1.3s infinite;
+}
+
+@keyframes denyut {
+    0%,100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+h1 {
+    margin: 10px 0;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.btn {
+    border: none;
+    background: white;
+    color: #ff4f81;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: scale(0.93);
+}
+
+
+/* POPUP */
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+.popup-box {
+    width: 100%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    color: #444;
+    border-radius: 25px;
+    padding: 20px;
+    text-align: center;
+    animation: muncul 0.4s ease;
+}
+
+@keyframes muncul {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* FOTO */
+
+.foto {
+    width: 100%;
+    border-radius: 20px;
+    margin: 10px 0 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.judul {
+    color: #ff4f81;
+    font-size: 25px;
+}
+
+.ucapan {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.tutup {
+    background: #ff4f81;
+    color: white;
+}
+
+/* HATI */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    animation: naik 5s linear forwards;
+    z-index: 1;
+}
+
+@keyframes naik {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HALAMAN AWAL -->
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="heart-big">
+            😁
+        </div>
+
+        <h1>halo Sayang</h1>
+
+        <p>
+            ngetes doang sayang
+            <br>
+            coba pencet
+        </p>
+
+        <button class="btn" onclick="bukaPesan()">
+            💌 buka
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- POPUP FOTO + UCAPAN -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-box">
+
+        <div class="judul">
+            ngetes 
+        </div>
+
+
+        <!--
+        GANTI FOTO DI BAWAH INI
+
+        Misalnya nama foto lu:
+        foto.jpg
+
+        Pastikan foto berada
+        di folder yang sama dengan HTML.
+        -->
+
+        <img
+            src="sayang.jpg"
+            class="foto"
+            alt="Foto kita"
+        >
+
+
+        <div class="ucapan">
+
+            <p>
+                hobah
+            </p>
+
+            <p>
+                tes
+            </p>
+
+            <p>
+                
+            </p>
+
+            <p>
+                
+            </p>
+
+            <p>
+                
+            </p>
+
+            <p>
+                
+            </p>
+
+            <br>
+
+            <b>
+                
+            </b>
+
+        </div>
+
+
+        <button class="btn tutup" onclick="tutupPesan()">
+             tutup
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+function bukaPesan() {
+
+    document.getElementById("popup").style.display = "flex";
+
+    // Hati berterbangan
+
+    for (let i = 0; i < 20; i++) {
+
+        setTimeout(function() {
+
+            let heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = "❤️";
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function() {
+                heart.remove();
+            }, 6000);
+
+        }, i * 150);
+
+    }
+}
+
+
+function tutupPesan() {
+
+    document.getElementById("popup").style.display = "none";
+
+}
+
+</script>
+
+
+</body>
+</html>
